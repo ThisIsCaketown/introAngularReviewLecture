@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+  <head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body ng-controller="mainCtrl">
+    
+    <select ng-model="sort" ng-options="sort.value as sort.name for sort in sortingOptions">
+    </select>
+    
+    <select ng-model="sortDir">
+      <option value="+">Ascending</option>
+      <option value="-">Descending</option>
+    </select>
+    
+    <input ng-model="searchOptions.rent" placeholder="Sort by rent">
+    <input ng-model="searchOptions.baths" placeholder="Sort by bathrooms">
+    
+    <div ng-repeat="house in housing | filter: searchOptions | orderBy: sortDir + sort" class="housing">
+      <h1 class="title">{{house.title}}</h1>
+      <ul>
+        <li>Bedrooms: {{house.beds}}</li>
+        <li>Bathrooms: {{house.baths}}</li>
+        <li>Rent: {{house.rent | currency}}</li>
+        <li>Cost to Own: {{house.cost | currency}}</li>
+        <li>Location: {{house.location.city}}, {{house.location.state}}</li>
+      </ul>
+      
+    </div>
+    
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+    <script src="./js/app.js"></script>
+    <script src="./js/mainCtrl.js"></script>
+  </body>
+</html>

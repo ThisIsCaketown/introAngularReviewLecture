@@ -1,0 +1,10 @@
+.housing{
+  height: 300px;
+  width: 500px;
+  border: 1px solid black;
+  margin: 20px;
+}
+
+.title{
+  text-align: center;
+}
